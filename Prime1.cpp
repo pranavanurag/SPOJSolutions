@@ -1,6 +1,7 @@
 ///throughout the program, the value '1' indicates a prime and '0' indicates a composite number that is represented by the index of the concerened array
 #include <iostream>
 #include <math.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -61,6 +62,6 @@ int main()
     	printprimes(m,n);	//calling the printprimes(,) function
     	cout<<endl;
     }	
-
+    getch();
     return 0;
 }

@@ -12,7 +12,6 @@ void PushStack(char c)	//function to push operator or '(' into the Stack on the 
 {
 	n++;
 	Stack[n]=c;
-	
 }
 
 void ShowStack()	//function to show the operators for the characters displayed till now
