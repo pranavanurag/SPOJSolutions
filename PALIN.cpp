@@ -19,7 +19,7 @@ void ShowArray(int Array[], int n)	//function to print out integer array as numb
 }
 
 
-long Convert(int Array[], char Source[])	//function that takes character array and assigns integer array the same big number
+long Convert(int Array[], char Source[])	//function that takes character array and assigns integer array the same big number (returns length)
 {
 	int length = strlen(Source);
 	for (int i = 0; i < length; i++)
@@ -47,33 +47,6 @@ bool MirrorGreater(int Array[], int Mirrored[]. int n)	//function to comparee tw
 	return 1;		
 }
 
-void Increment(int Array[], int index)
-{
-	if(Array[index] < 9) Array[index]++;
-	else if(Array[index] == 9)
-	{
-		Array[index] = 0;
-		Increment(Array, index + 1);
-		Increment(Array, index - 1);
-	}
-}
-
-void Increment(int Array[], int index1, int index2)
-{
-
-}
-
-
-void IncrementCenter(int Array[]. int n)
-{
-	if(n%2 == 0)	//two center elements
-	{
-		Increment(Array, n/2);
-		Increment(Array, n/2+1);
-
-	}
-}
-
 
 void NextPalindrome(int Array[], int n)
 {
@@ -82,6 +55,14 @@ void NextPalindrome(int Array[], int n)
 	long n = Convert(Number, String);	//Convert returns length of array, stored it in n
 
 	Mirror(Number, Mirrored, n);	//Mirrored array contains suspected palindrome
+
+	if(MirrorGreater) 
+		ShowArray(Mirrored);
+	else
+	{
+		/*add code to increment 
+
+	}
 }
 
 
