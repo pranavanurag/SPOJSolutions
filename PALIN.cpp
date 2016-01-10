@@ -47,21 +47,39 @@ bool MirrorGreater(int Array[], int Mirrored[]. int n)	//function to comparee tw
 	return 1;		
 }
 
+void Increment(int Array[], int n)
+{
+	//999 -> 1001
+	//12321 -> 12421
+	//1991 -> 2002
+	//12345678987654321 -> 12345679097654321
+}
+
 
 void NextPalindrome(int Array[], int n)
 {
-	int Mirrored[1000001];	//Number's first half will bve mirrored into the second half of this array on the way to finding out palindrome
-
 	long n = Convert(Number, String);	//Convert returns length of array, stored it in n
 
-	Mirror(Number, Mirrored, n);	//Mirrored array contains suspected palindrome
+	if(IsPalindrome(Number, n))
+		/*
+			Call function to increment center elements of parameter Number
+			Show the incremented array
+		*/
 
-	if(MirrorGreater) 
-		ShowArray(Mirrored);
 	else
-	{
-		/*add code to increment 
+	{	
+		int Mirrored[1000001];	//Number's first half will bve mirrored into the second half of this array on the way to finding out palindrome
+		Mirror(Number, Mirrored, n);	//Mirrored array contains suspected palindrome
 
+		if(MirrorGreater(Array, Mirrored)) 
+			ShowArray(Mirrored);
+		else
+		{
+			/*
+				Call function to increment center elements of Mirrored
+				Show incremented Mirrored array
+			*/
+		}
 	}
 }
 
