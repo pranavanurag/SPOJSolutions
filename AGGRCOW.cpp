@@ -1,25 +1,63 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-long Answer(long x[], long c)	//function to calculate optimum solution for given stall positions and number of cows
+bool CanFit(long N, long C, long StallPositions[], long MinDistance)
 {
-	
+	long Placed = 1;
+	long Pos = StallPositions[0];
+
+	for(int i = 1; i < N; i++)
+	{
+		if(StallPositions[i] - Pos >= MinDistance)
+		{	
+			Placed++;
+			Pos = StallPositions[i];
+			
+			if(Placed == C)
+				return 1;
+		}
+	}
+
+	return 0;
+}
+
+long BinSearch(long N, long C, long StallPositions[], long Low, long High)
+{
+	long Mid = Low + (High - Low + 1)/2;
+	while(High > Low)
+	{
+
+		if (CanFit(N, C, StallPositions, Mid))
+			Low = Mid;
+		else
+			High = Mid - 1;
+
+		Mid = Low + (High - Low + 1)/2;	
+	}
+	return High;
 }
 
 int main()
 {
-	int t;	//number of test cases
-	long StallPositions[1000000];	//array containing positions of 'n' stalls
-	long c, n;	//c = number of cows, n = number of stalls
+	long StallPositions[1000000];
+	long N, C, MaxPos = 0;
+	int t;
 
 	cin>>t;
-
 	while(t-- && t >= 0)
 	{
-		cin>>n>>c;
-		for(int i = 0;i < n; i++)
+		cin>>N>>C;
+		for (int i = 0; i < N; i++)
+		{
 			cin>>StallPositions[i];
-		cout<<Answer(StallPositions, c);
+			if(MaxPos < StallPositions[i])
+				MaxPos = StallPositions[i];
+		}
+		sort(StallPositions, StallPositions+N);
+		cout<<BinSearch(N, C, StallPositions, 1, MaxPos)<<endl;
 	}
+
+	return 0;
 }
