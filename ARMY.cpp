@@ -24,7 +24,7 @@ int main()
 		for(int i=0; i < nMechaGodzilla; i++)
 		{
 			int x;
-			cin>>x;	//parsing through Godzilla's army
+			cin>>x;	//parsing through MechaGodzilla's army
 			if(MaxMechaGodzilla < x)
 				MaxMechaGodzilla = x;	//storing strongest monster strenght in MechaGodzilla's army
 		}
