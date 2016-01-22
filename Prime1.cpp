@@ -1,24 +1,23 @@
 ///throughout the program, the value '1' indicates a prime and '0' indicates a composite number that is represented by the index of the concerened array
 #include <iostream>
 #include <math.h>
-#include <conio.h>
 
 using namespace std;
 
-int x[31622], y[1000001];	//declaring the seive and the segment array
+int x[50000], y[1000000];	//declaring the seive and the segment array
 unsigned long long int m, n;	//declaring the integer variables for the segment
 
 void initialize()	//function to prepare the seive by assigning all prime representing indices with a value of 1
 {
-	for(int i=0;i<31621;i++)	//loop to assign all indices a composite marking
+	for(int i=0;i<50000;i++)	//loop to assign all indices a composite marking
 		x[i]=1;
 
 	int prime=2;
-	for(int i=0;i<31621;i++)	//loop to create the seive
+	for(int i=0;i<50000;i++)	//loop to create the seive
 	{
 		if(x[i]==1) prime=i+2; //picking up primes to cross out their multiples
 
-		for(int j=prime*prime-2;j<31621;j+=prime)
+		for(int j=prime*prime-2;j<50000;j+=prime)
 			x[j]=0;    //crossing out all the multiples of th prime number picked up in the previous loop
 	}
 }
@@ -60,8 +59,6 @@ int main()
     {
     	cin>>m>>n;
     	printprimes(m,n);	//calling the printprimes(,) function
-    	cout<<endl;
-    }	
-    getch();
+    }
     return 0;
 }
