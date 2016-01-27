@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cstdio>
 using namespace std;
 
 struct Map
@@ -67,4 +67,6 @@ int main()
 		RefreshMemo();
 		cout<<MaximumDollars(n)<<endl;
 	}
+	getchar();
+	return 0;
 }
