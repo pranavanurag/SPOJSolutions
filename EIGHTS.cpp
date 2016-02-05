@@ -10,6 +10,6 @@ int main()
 	while(t--&&t>=0)
 	{
 		cin>>n;
-		cout<<192+250(n-1)<<endl;
+		cout<<192+250*(n-1)<<endl;
 	}
 }

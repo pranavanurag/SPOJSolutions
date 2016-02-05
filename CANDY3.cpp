@@ -5,6 +5,7 @@ using namespace std;
 int main()
 
 {
+	ios::sync_with_stdio(false);
 	unsigned long long int total=0, n, NumberOfCandies;
 	int t;
 	cin>>t;

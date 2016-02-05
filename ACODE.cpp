@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string.h>
 
@@ -11,22 +12,6 @@ void RefreshMemo()
 		Memo[i] = 0;
 	Memo[0] = 1;
 }
-
-bool IsValidExpression(char x[])
-{
-	if ( x[0] == '0')
-		return 0;
-
-	for (int i = 1;i < strlen(x); i++)
-		if(x[i] == '0')
-			if (! (x[i-1] == '1' || x[i-1] == '2') )
-				return 0;
-			else if( x[i-1] == '0' )
-				return 0;
-
-	return 1;
-}
-
 
 void FixExpression(char x[])
 {
@@ -43,7 +28,9 @@ void FixExpression(char x[])
 
 long long Decrypt(char x[], int n)
 {
-	if (Memo[n])
+	if (n == 0)
+		return 0;
+	else if (Memo[n])
 		return Memo[n];
 
 	else
@@ -73,15 +60,9 @@ int main()
 	cin>>Expression;
 	while(!(strlen(Expression) == 1 && Expression[0] == '0'))
 	{
-		if(IsValidExpression(Expression))
-		{
 			RefreshMemo();
 			FixExpression(Expression);
 			cout<<Decrypt(Expression, strlen(Expression)-1)<<endl;
-		}
-		else
-			cout<<0<<endl;
-
 		cin>>Expression;
 	}
 

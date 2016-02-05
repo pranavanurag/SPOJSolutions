@@ -67,6 +67,5 @@ int main()
 		RefreshMemo();
 		cout<<MaximumDollars(n)<<endl;
 	}
-	getchar();
 	return 0;
 }

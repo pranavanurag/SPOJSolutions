@@ -19,7 +19,6 @@ bool CanFit(long N, long C, long StallPositions[], long MinDistance)
 				return 1;
 		}
 	}
-
 	return 0;
 }
 

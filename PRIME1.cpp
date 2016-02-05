@@ -1,23 +1,27 @@
-///throughout the program, the value '1' indicates a prime and '0' indicates a composite number that is represented by the index of the concerened array
+/*input
+1
+2146483647 2147483647
+*/
+
 #include <iostream>
 #include <math.h>
 
 using namespace std;
 
-int x[50000], y[1000000];	//declaring the seive and the segment array
+int x[43460], y[1000001];	//declaring the seive and the segment array
 unsigned long long int m, n;	//declaring the integer variables for the segment
 
-void initialize()	//function to prepare the seive by assigning all prime representing indices with a value of 1
+void initialize()	//funtion to prepare the seive by assigning all prime representing indices with a value of 1
 {
-	for(int i=0;i<50000;i++)	//loop to assign all indices a composite marking
+	for(int i=0;i<43459;i++)	//loop to assign all indices a composite marking
 		x[i]=1;
 
 	int prime=2;
-	for(int i=0;i<50000;i++)	//loop to create the seive
+	for(int i=0;i<43459;i++)	//loop to create the seive
 	{
 		if(x[i]==1) prime=i+2; //picking up primes to cross out their multiples
 
-		for(int j=prime*prime-2;j<50000;j+=prime)
+		for(int j=prime*prime-2;j<43459;j+=prime)
 			x[j]=0;    //crossing out all the multiples of th prime number picked up in the previous loop
 	}
 }
@@ -50,6 +54,7 @@ void printprimes(unsigned long long int m, unsigned long long int n)	//function 
 
 int main()
 {
+	ios::sync_with_stdio(false);
     initialize();	//the seive is now ready
 
     int t;
@@ -59,6 +64,7 @@ int main()
     {
     	cin>>m>>n;
     	printprimes(m,n);	//calling the printprimes(,) function
-    }
+    }	
+
     return 0;
 }
