@@ -1,6 +1,6 @@
 /*input
 1
-2146483647 2147483647
+1 10
 */
 
 #include <iostream>
