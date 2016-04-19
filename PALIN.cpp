@@ -75,7 +75,7 @@ void ShowNextPalindrome(char x[], int n)
 
 	else
 	{
-		char m[10000s01];
+		char m[1000001];
 
 		for(int i = 0; i < n/2 ; i++)
 			m[i] = x[i];
