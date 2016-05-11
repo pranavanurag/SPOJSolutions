@@ -1,12 +1,3 @@
-/*input
-6
-1234
-9876567876
-9999923424
-1234254
-4265
-99
-*/
 #include <iostream>
 #include <string.h>
 

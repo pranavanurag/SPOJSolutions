@@ -1,8 +1,3 @@
-/*input
-1
-1 100000
-*/
-
 #include <iostream>
 #include <math.h>
 

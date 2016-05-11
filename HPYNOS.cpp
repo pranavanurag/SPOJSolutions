@@ -1,6 +1,3 @@
-/*input
-132435243254
-*/
 #include <iostream>
 
 using namespace std;

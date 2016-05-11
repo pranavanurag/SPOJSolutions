@@ -1,12 +1,3 @@
-/*input
-6 5
-3 1 7 4 2
-2 1 3 0 1
-1 0 2 1 8
-2 2 0 5 3
-2 1 4 4 4
-5 2 7 5 1
-*/
 #include <iostream>
 
 using namespace std;

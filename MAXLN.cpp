@@ -1,7 +1,3 @@
-/*input
-1
-1000000
-*/
 #include <iostream>
 
 using namespace std;
