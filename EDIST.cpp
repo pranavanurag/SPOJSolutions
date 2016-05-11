@@ -11,7 +11,7 @@ int main()
 	cin>>t;
 	while(t--)
 	{
-		string x, y;
+		string x, y;	
 		cin>>x>>y;
 		int n1 = x.length();
 		int n2 = y.length();
