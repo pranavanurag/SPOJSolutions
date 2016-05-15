@@ -36,6 +36,9 @@ void AssignMinDistance(int i, int j, int N, int M)
 		couple Visiting(y, x);	//visit this node's neighbours
 		ToVisit.pop();	//remove the first element
 		distance = Map[y][x] + 1;	//exploring immediate neighbours
+
+		//We visit a node only if the previously assigned distance is larger than the apparent distance
+
 		if (y != 0 && distance < Map[y-1][x])	//can visit up
 		{	
 			Map[y-1][x] = distance;
@@ -64,6 +67,7 @@ void AssignMinDistance(int i, int j, int N, int M)
 
 int main()
 {
+	ios::sync_with_stdio(false);
 	int t;
 	cin>>t;
 	while(t--)
