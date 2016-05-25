@@ -34,8 +34,7 @@ void Build(int i, int x, int y)	//i, x, and y follow 1-based indexing
 	{
 		int m = (x + y)/2;
 
-		//recursing
-		Build(2*i, x, m);
+		//recursing	Build(2*i, x, m);
 		Build(2*i+1, m+1, y);
 		
 		//assigning MaxPrefixSum

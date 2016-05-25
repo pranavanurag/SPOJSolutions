@@ -1,7 +1,6 @@
 /*input
 2
-1 10
-100000 1000000
+1 1000000
 */
 #include <iostream>
 #include <math.h>
