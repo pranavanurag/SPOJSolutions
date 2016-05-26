@@ -33,5 +33,6 @@ int main()
 		else
 			cout<<ETF(n)<<endl;
 	}
+	
 	return 0;
 }
