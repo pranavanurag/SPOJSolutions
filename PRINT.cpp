@@ -1,64 +1,54 @@
 #include <iostream>
-#include <math.h>
-#include <cstdio>
+#include <cmath>
+#include <stdio.h>
 
 using namespace std;
 
-int x[43460], y[1000001];
-unsigned long long int m, n;
+bool isPrime[46342];
+long L, U;
+bool A[1000001];
 
-void initialize()
+void Print()
 {
-	for(int i=0;i<43459;i++)
-		x[i]=1;
+	int N = U - L + 1;
+	for (int i = 1; i <= N; i++)
+		A[i] = 1;
 
-	int prime=2;
-	for(int i=0;i<43459;i++)
-	{
-		if(x[i]==1) prime=i+2;
-		for(int j=prime*prime-2;j<43459;j+=prime)
-			x[j]=0;
-	}
+	for (int i = 2; i <= sqrt(U); i++)
+		if (isPrime[i])
+		{
+			int Prime = i;
+			for (int j = (Prime - L%Prime)%Prime + 1; j <= N; j += Prime)
+				if (j+L-1 != Prime)
+					A[j] = 0;
+		}
+
+	for (int i = 1; i <= N; i++)
+		if (A[i])
+			printf("%ld\n", i+L-1);
 }
 
-void printprimes(unsigned long long int m, unsigned long long int n)
+void Seive()
 {
-	if(m==1) m+=1;
+	for (int i = 2; i <= 46341; i++)
+		isPrime[i] = 1;
 
-	int n1=n-m+1;
-	int prime;
-	
-	for(int i=0;i<n1;i++)
-		y[i]=1;
-
-	for(int i=0;i<sqrt(n)-2;i++)
-	{
-		if(x[i]==1) prime=i+2;
-		
-		unsigned long long int begin=prime-(m%prime);
-		begin=begin%prime;
-		
-		for(int j=begin;j<n1;j+=prime)
-			if(j+m!=prime)
-				y[j]=0;
-	}
-
-	for(int i=0;i<n1;i++)
-		if(y[i]==1) printf("%lld\n", m+i);
+	for (int i = 2; i <= 216; i++)
+		if (isPrime[i])
+			for (int j = i*i; j <= 46341; j += i)
+				isPrime[j] = 0;
 }
 
 int main()
 {
-    initialize();
-
-    int t;
-    scanf("%d", &t);
-
-    for(int i=0;i<t;i++)
-    {
-    	scanf("%lld%lld", &m, &n);
-    	printprimes(m,n);
-    }	
-
-    return 0;
+	ios::sync_with_stdio(false);
+	Seive();
+	int t;
+	scanf("%d", &t);
+	while (t--)
+	{
+		scanf("%ld %ld", &L, &U);
+		Print();
+	}
+	return 0;
 }
