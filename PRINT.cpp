@@ -10,6 +10,9 @@ bool A[1000001];
 
 void Print()
 {
+	if (L == 1)
+		L++;
+
 	int N = U - L + 1;
 	for (int i = 1; i <= N; i++)
 		A[i] = 1;
