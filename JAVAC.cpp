@@ -1,26 +1,3 @@
-/*input
-long_and_mnemonic_identifier 
-anotherExample 
-i 
-bad_Style 
-i 
-N 
-NAME 
-nAME 
-_name 
-_n_a_m_e 
-name 
-n_a_m_e 
-n_a_m_e_ 
-bad_Style 
-baD_style 
-bad_sTyle 
-bAd_style 
-bAd_sTyle 
-a___b 
-a__ 
-__aab
-*/
 #include <iostream>
 #include <string>
 #include <cctype>
