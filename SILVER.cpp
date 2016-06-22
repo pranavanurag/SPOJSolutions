@@ -3,11 +3,13 @@
 
 using namespace std;
 
+#define scan(x) scanf("%d", &x)
+#define print(x) printf("%d\n", x)
+
 int main()
 {
-	ios::sync_with_stdio(false);
-	float n;
-	while (cin>>n && n != 0)
-		cout<<(int)( ( sqrt(8*n) - 1)/2 - 0.5)<<endl;
+	int n;
+	while (scan(n) && n != 0)
+		print((int)log2(n));
 	return 0;
 }
