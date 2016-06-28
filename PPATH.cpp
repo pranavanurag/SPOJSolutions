@@ -45,7 +45,7 @@ int Construct(int Digits[])
 
 int PPATH(int p1, int p2)
 {
-	int ans = 0, NewNumber, CurrentPrime;
+	int NewNumber, CurrentPrime;
 	queue <int> toExplore;
 	toExplore.push(p1);
 
@@ -55,7 +55,6 @@ int PPATH(int p1, int p2)
 		CurrentPrime = toExplore.front();
 		toExplore.pop();
 		Visited[CurrentPrime] = 1;
-		//printf("\nCurrent Prime is %d. It's level is %d. Can jump to ----> ", CurrentPrime, Level[CurrentPrime]);
 		int CurrentPrime_Copy = CurrentPrime;
 		if (CurrentPrime == p2)
 			break;
@@ -86,8 +85,6 @@ int PPATH(int p1, int p2)
 							Level[NewNumber] = Level[CurrentPrime] + 1;
 						else
 							Level[NewNumber] = min(Level[NewNumber], Level[CurrentPrime] + 1);
-
-						//printf("%d (Level = %d), ", NewNumber, Level[NewNumber]);
 					}
 				}				
 		}
@@ -100,12 +97,13 @@ int main()
 	Seive();
 	int n, p1, p2;
 	scan(n);
+
 	while (n--)
 	{
 		Initialize();
 		scan(p1); scan(p2);
 		print(PPATH(p1, p2));
 	}
-	//printf("Time elapsed = %f\n", clock()/(double)CLOCKS_PER_SEC);
+
 	return 0;
 }
