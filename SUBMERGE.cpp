@@ -66,29 +66,29 @@ void DFSVisit(int u)
 
 			Graph[u].low = min(Graph[u].low, Graph[v].low);
 
-			if (u != 1 && Graph[v].low >= Graph[u].d)
+			if (u != 1 && Graph[v].low >= Graph[u].d)	//non-root articulation point condition
 			{
 				//cout<<"Articulation point found: "<<u<<endl;
 				isArtPoint[u] = 1;
 			}
 		}
 
-		else if (Graph[u].p != v)
+		else if (Graph[u].p != v)	//back-edge
 		{
 			//cout<<"Back edge "<<u<<", "<<v<<endl;
 			Graph[u].low = min(Graph[u].low, Graph[v].d);
 		}
 	}
 
-	if (u == 1 && Graph[u].n >= 2)
+	if (u == 1 && Graph[u].n >= 2)	//root of Depth-first tree
 	{
 		//cout<<"Articulation point found: "<<u<<endl;
 		isArtPoint[u] = 1;
 	}
 	
-	t++;
-	Graph[u].f = t;
-	Graph[u].Color = 1;
+	t++;							
+	Graph[u].f = t;					//finishing time
+	Graph[u].Color = 1;				//paint 'u' black
 }
 
 int DFS()
