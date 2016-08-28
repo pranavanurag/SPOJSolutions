@@ -19,7 +19,7 @@ void Refresh()
 void UpdateRange(int i, int STx1, int STx2, int x1, int x2, long long V)
 {
 	if (SegTree[i].Lazy != 0)
-	{
+	{	
 		SegTree[i].Sum += (STx2 - STx1 + 1)*SegTree[i].Lazy;
 
 		if (STx1 != STx2)

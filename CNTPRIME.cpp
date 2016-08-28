@@ -31,6 +31,18 @@ void Seive()
 				IsPrime[j] = 0;
 }
 
+void PropogateLazy(int i, int STx1, int STx2)
+{
+	if (SegTree[i].Lazy != -1)
+	{
+		SegTree[i].Sum = (STx2 - STx1 + 1)*SegTree[i].Lazy;
+
+		if (STx1 != STx2)
+			SegTree[2*i].Lazy = SegTree[2*i + 1].Lazy = SegTree[i].Lazy;
+		SegTree[i].Lazy = -1;
+	}
+}
+
 void Build(int i, int STx1, int STx2)
 {
 	if (STx1 > STx2)
@@ -48,14 +60,7 @@ void Build(int i, int STx1, int STx2)
 
 void UpdateRange(int i, int STx1, int STx2, int x1, int x2, int V)
 {
-	if (SegTree[i].Lazy != -1)
-	{
-		SegTree[i].Sum = (STx2 - STx1 + 1)*SegTree[i].Lazy;
-
-		if (STx1 != STx2)
-			SegTree[2*i].Lazy = SegTree[2*i + 1].Lazy = SegTree[i].Lazy;
-		SegTree[i].Lazy = -1;
-	}
+	PropogateLazy(i, STx1, STx2);
 
 	if (x1 > x2 || STx1 > STx2 || x1 > STx2 || x2 < STx1)
 		return;
@@ -63,10 +68,8 @@ void UpdateRange(int i, int STx1, int STx2, int x1, int x2, int V)
 	if (STx1 >= x1 && STx2 <= x2)
 	{
 		SegTree[i].Sum = (STx2 - STx1 + 1)*V;
-
 		if (STx1 != STx2)
 			SegTree[2*i].Lazy = SegTree[2*i + 1].Lazy = V;
-		SegTree[i].Lazy = -1;
 	}
 	else
 	{
@@ -79,15 +82,7 @@ void UpdateRange(int i, int STx1, int STx2, int x1, int x2, int V)
 
 Node Query(int i, int STx1, int STx2, int x1, int x2)
 {
-	if (SegTree[i].Lazy != -1)
-	{
-		SegTree[i].Sum = (STx2 - STx1 + 1)*SegTree[i].Lazy;
-
-		if (STx1 != STx2)
-			SegTree[2*i].Lazy = SegTree[2*i + 1].Lazy = SegTree[i].Lazy;
-		SegTree[i].Lazy = -1;
-	}
-
+	PropogateLazy(i, STx1, STx2);
 	if (x1 > x2 || STx1 > STx2 || x1 > STx2 || x2 < STx1)
 		return Node();
 

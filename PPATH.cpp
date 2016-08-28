@@ -55,9 +55,12 @@ int PPATH(int p1, int p2)
 		CurrentPrime = toExplore.front();
 		toExplore.pop();
 		Visited[CurrentPrime] = 1;
+
+		cout<<"From "<<CurrentPrime<<". Can jump to -> ";
 		int CurrentPrime_Copy = CurrentPrime;
 		if (CurrentPrime == p2)
 			break;
+
 
 		int Digits[5];
 		for (int i = 4; i >= 1; i--)
@@ -80,14 +83,15 @@ int PPATH(int p1, int p2)
 					if (Prime[NewNumber] && NewNumber != CurrentPrime && !Visited[NewNumber])
 					{
 						toExplore.push(NewNumber);
-
+						cout<<NewNumber<<" ";
 						if (Level[NewNumber] == -1)
 							Level[NewNumber] = Level[CurrentPrime] + 1;
 						else
 							Level[NewNumber] = min(Level[NewNumber], Level[CurrentPrime] + 1);
 					}
-				}				
+				}			
 		}
+		cout<<endl;	
 	}
 	return Level[p2];
 }

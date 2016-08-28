@@ -29,7 +29,7 @@ long BinSearch(long N, long C, long StallPositions[], long Low, long High)
 	{
 
 		if (CanFit(N, C, StallPositions, Mid))
-			Low = Mid;
+			Low = Mid + 1;
 		else
 			High = Mid - 1;
 
