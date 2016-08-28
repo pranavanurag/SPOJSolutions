@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -88,7 +88,7 @@ public:
 	void SetN()
 	{
 		int n;
-		cin>>n;
+		scanf("%d", &n);
 		N = n;
 	}
 };
@@ -97,45 +97,43 @@ SegmentTree X, Y, Z;
 
 int main()
 {
-	ios::sync_with_stdio(false);
 	int T, Q;
-	cin>>T;
+	scanf("%d", &T);
 	while (T--)
 	{
 		X.Refresh(), Y.Refresh(), Z.Refresh();
 		X.SetN(), Y.SetN(), Z.SetN();
-		cin>>Q;
+		scanf("%d", &Q);
 		while (Q--)
 		{
 			ull P, X1, X2, Y1, Y2, Z1, Z2;
-			cin>>P;
+			scanf("%lld", &P);
 			if (P == 0)
 			{
-				cin>>X1>>X2;
+				scanf("%lld %lld", &X1, &X2);
 				X1++; X2++;
 				X.Update(X1, X2);
 			}
 			else if (P == 1)
 			{
-				cin>>Y1>>Y2;
+				scanf("%lld %lld", &Y1, &Y2);
 				Y1++; Y2++;
 				Y.Update(Y1, Y2);
 			}
 			else if (P == 2)
 			{
-				cin>>Z1>>Z2;
+				scanf("%lld %lld", &Z1, &Z2);
 				Z1++; Z2++;
 				Z.Update(Z1, Z2);
 			}
 			else
 			{
-				cin>>X1>>Y1>>Z1>>X2>>Y2>>Z2;
+				scanf("%lld %lld %lld %lld %lld %lld", &X1, &Y1, &Z1, &X2, &Y2, &Z2);
 				X1++, Y1++, Z1++, X2++, Y2++, Z2++;
 				ull Ansx = X.QueryTree(X1, X2), Ansy = Y.QueryTree(Y1, Y2), Ansz = Z.QueryTree(Z1, Z2);
 				ull Ansxy = Ansx*(Y2 - Y1 + 1) + Ansy*(X2 - X1 + 1) - 2*Ansx*Ansy;
 				ull Ans = ((Y2 - Y1 + 1)*(X2 - X1 + 1) - Ansxy)*Ansz + Ansxy*(Z2 - Z1 + 1 - Ansz);
-				// cout<<"Ansx = "<<Ansx<<", Ansy = "<<Ansy<<", Ansz = "<<Ansz<<", Ansxy = "<<Ansxy<<endl;
-				cout<<Ans<<endl;
+				printf("%lld\n", Ans);
 			}
 		}
 	}
