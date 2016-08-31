@@ -1,71 +1,26 @@
-#include <iostream>
-#include <cstdio>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-struct Map
-{
-	unsigned long long key;
-	unsigned long long value;
-};
+#define ull unsigned long long
 
-Map Memo[1000];
-int c;
+map <int, ull> Memo;
 
-void RefreshMemo()
+ull DP(ull n)
 {
-	for(int i=0;i<1000;i++)
-	{
-		Memo[i].key=0;
-		Memo[i].value=0;
-	}
-	c=-1;
-}
-
-int FindKey(unsigned long long x)
-{
-	for(int i=0;i<1000;i++)
-		if(Memo[i].key==x) return i;
-	return -1;
-}
-
-unsigned long long MaximumDollars(unsigned long long n)
-{
-	if(n<12)
+	if (n < 12)
 		return n;
-	else
-	{
-		if(FindKey(n)>0)
-			return Memo[FindKey(n)].value;
-
-		else
-		{
-			unsigned long long x = MaximumDollars(n/2) + MaximumDollars(n/3) + MaximumDollars(n/4);
-
-			if(x>n)
-			{
-				c++;
-				Memo[c].key=n;
-				Memo[c].value=x;
-			}
-			else
-			{
-				c++;
-				Memo[c].key=n;
-				Memo[c].value=n;
-			}
-			return Memo[c].value;
-		}
-	}
+	if (Memo.count(n))
+		return Memo[n];
+	Memo[n] = max(DP(n/2) + DP(n/3) + DP(n/4), n);
+	return Memo[n];
 }
 
 int main()
 {
-	unsigned long long n;
-
-	while(cin>>n)
-	{
-		RefreshMemo();
-		cout<<MaximumDollars(n)<<endl;
-	}
+	ios::sync_with_stdio(false);
+	ull x;
+	while (cin>>x)
+		cout<<DP(x)<<endl;	
 	return 0;
 }
