@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+y#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -18,7 +18,7 @@ ull DP(ull n)
 
 int main()
 {
-	ios::sync_with_stdio(false);
+	ios::sync_with_stdio(false)
 	ull x;
 	while (cin>>x)
 		cout<<DP(x)<<endl;	
