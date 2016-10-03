@@ -1,62 +1,48 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-bool CanFit(long N, long C, long StallPositions[], long MinDistance)
-{
-	long Placed = 1;
-	long Pos = StallPositions[0];
+int N, A[1000001], T, C;
 
-	for(int i = 1; i < N; i++)
+bool Predicate(int MinDist)
+{
+	int Placed = 1, LastPlacedAt = A[1];
+	for (int i = 2; i <= N && Placed < C; i++)
 	{
-		if(StallPositions[i] - Pos >= MinDistance)
-		{	
+		if (A[i] - LastPlacedAt >= MinDist)
+		{
+			LastPlacedAt = A[i];
 			Placed++;
-			Pos = StallPositions[i];
-			
-			if(Placed == C)
-				return 1;
 		}
 	}
-	return 0;
+	return (Placed == C);
 }
 
-long BinSearch(long N, long C, long StallPositions[], long Low, long High)
+int BinSearch(int Low, int High)
 {
-	long Mid = Low + (High - Low + 1)/2;
-	while(High > Low)
+	int Mid = Low + (High - Low + 1)/2;
+	while (Low < High)
 	{
-
-		if (CanFit(N, C, StallPositions, Mid))
-			Low = Mid + 1;
+		if (Predicate(Mid))
+			Low = Mid;
 		else
 			High = Mid - 1;
-
-		Mid = Low + (High - Low + 1)/2;	
+		Mid = Low + (High - Low + 1)/2;
 	}
 	return High;
 }
 
 int main()
 {
-	long StallPositions[1000000];
-	long N, C, MaxPos = 0;
-	int t;
-
-	cin>>t;
-	while(t-- && t >= 0)
+	ios::sync_with_stdio(false);
+	cin>>T;
+	while (T--)
 	{
 		cin>>N>>C;
-		for (int i = 0; i < N; i++)
-		{
-			cin>>StallPositions[i];
-			if(MaxPos < StallPositions[i])
-				MaxPos = StallPositions[i];
-		}
-		sort(StallPositions, StallPositions+N);
-		cout<<BinSearch(N, C, StallPositions, 1, MaxPos)<<endl;
+		for (int i = 1; i <= N; i++)
+			cin>>A[i];
+		sort(A + 1, A + N + 1);
+		cout<<BinSearch(1, A[N])<<endl;
 	}
-
 	return 0;
 }
