@@ -63,7 +63,7 @@ int main()
 		ans = 1;
 
 		cin>>n;
-		trie t;
+		trie trie_instance;
 		while (n--)
 		{
 			cin>>temp;
@@ -74,7 +74,7 @@ int main()
 		reverse(words.begin(), words.end());
 
 		for (auto x: words)
-			t.insert(x);
+			trie_instance.insert(x);
 
 		cout<<((ans)?"YES\n":"NO\n");
 
